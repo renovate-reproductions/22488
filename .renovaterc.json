@@ -1,0 +1,18 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "dependencyDashboard": true,
+  "extends": ["config:base"],
+  "pre-commit": {
+    "enabled": true
+  },
+  "regexManagers": [
+    {
+      "datasourceTemplate": "github-tags",
+      "fileMatch": ["(^|/)\\.pre-commit-config\\.ya?ml$"],
+      "matchStrings": [
+        "repo: https?://(?<hostname>[^/]+)/(?<depName>\\S*)\n\\s+rev: (?<currentValue>v?\\d+\\.\\d+\\.\\d+)\n",
+        "repo: https?://(?<hostname>[^/]+)/(?<depName>\\S*)\n\\s+rev: (?<currentDigest>[a-z0-9]{40}|[a-z0-9]{64}) # (?<currentValue>v?\\d+\\.\\d+\\.\\d+)\n"
+      ]
+    }
+  ]
+}
